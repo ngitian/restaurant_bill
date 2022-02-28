@@ -28,6 +28,10 @@ int main(int argc, char* argv[])
     int r = rand() % 4;
 
     // calculate outputs: meal cost, tax amount, tip amount, and total bill
+    int mealCost = MEAL_OPTIONS[r];
+    int taxAmount = mealCost * (1 + taxPerc / 100);
+    int tipAmount = mealCost * (1 + tipPerc / 100);
+    int totalBill = mealCost + taxAmount + tipAmount;
 
     // output to display
 
