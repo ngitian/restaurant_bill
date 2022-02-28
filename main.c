@@ -22,6 +22,10 @@ int main(int argc, char* argv[])
     float tipPerc = strtof(argv[2], NULL);
 
     // randomly pick a meal
+    const int MEAL_OPTIONS[4] = {995, 455, 1325, 2235};
+    time_t t;
+    srand((unsigned) time(&t));
+    int r = rand() % 4;
 
     // calculate outputs: meal cost, tax amount, tip amount, and total bill
 
