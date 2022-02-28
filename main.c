@@ -21,7 +21,11 @@ int main(int argc, char* argv[])
     float taxPerc = strtof(argv[1], NULL);
     float tipPerc = strtof(argv[2], NULL);
 
-    printf("%f, %f\n", taxPerc, tipPerc);
+    // randomly pick a meal
+
+    // calculate outputs: meal cost, tax amount, tip amount, and total bill
+
+    // output to display
 
     return 0;
 }
