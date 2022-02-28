@@ -29,11 +29,13 @@ int main(int argc, char* argv[])
 
     // calculate outputs: meal cost, tax amount, tip amount, and total bill
     int mealCost = MEAL_OPTIONS[r];
-    int taxAmount = mealCost * (1 + taxPerc / 100);
-    int tipAmount = mealCost * (1 + tipPerc / 100);
+    int taxAmount = mealCost * (float) taxPerc / 100;
+    int tipAmount = (mealCost + taxAmount) * (float) tipPerc / 100;
     int totalBill = mealCost + taxAmount + tipAmount;
 
     // output to display
+    printf("Meal cost:%.2f, tax amount:%.2f, tip amount:%.2f, total bill:%.2f\n",
+        (float)mealCost/100, (float)taxAmount/100, (float)tipAmount/100, (float)totalBill/100);
 
     return 0;
 }
