@@ -10,6 +10,7 @@ Pizza: $22.35
 #include <stdio.h> // io
 #include <time.h> // time
 #include <stdlib.h> // pseudo-random number generation
+#include <string.h>
 
 int main(int argc, char* argv[])
 {
@@ -22,19 +23,20 @@ int main(int argc, char* argv[])
     float tipPerc = strtof(argv[2], NULL);
 
     // randomly pick a meal
-    const int MEAL_OPTIONS[4] = {995, 455, 1325, 2235};
+    const char MEAL[4][9] = {"salad", "soup", "sandwich", "pizza"};
+    const int MEAL_COST[4] = {995, 455, 1325, 2235};
     time_t t;
     srand((unsigned) time(&t));
     int r = rand() % 4;
 
     // calculate outputs: meal cost, tax amount, tip amount, and total bill
-    int mealCost = MEAL_OPTIONS[r];
+    int mealCost = MEAL_COST[r];
     int taxAmount = mealCost * (float) taxPerc / 100;
-    int tipAmount = (mealCost + taxAmount) * (float) tipPerc / 100;
+    int tipAmount = mealCost * (float) tipPerc / 100;
     int totalBill = mealCost + taxAmount + tipAmount;
 
     // output to display
-    printf("Meal cost:%.2f, tax amount:%.2f, tip amount:%.2f, total bill:%.2f\n",
+    printf("%s($%.2f), tax: $%.2f, tip: $%.2f, total: $%.2f\n", MEAL[r],
         (float)mealCost/100, (float)taxAmount/100, (float)tipAmount/100, (float)totalBill/100);
 
     return 0;
