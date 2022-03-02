@@ -11,6 +11,7 @@ Pizza: $22.35
 #include <time.h> // time
 #include <stdlib.h> // pseudo-random number generation
 #include <string.h>
+#include <math.h> // to round number
 
 int main(int argc, char* argv[])
 {
@@ -31,13 +32,13 @@ int main(int argc, char* argv[])
 
     // calculate outputs: meal cost, tax amount, tip amount, and total bill
     int mealCost = MEAL_COST[r];
-    int taxAmount = mealCost * (float) taxPerc / 100;
-    int tipAmount = mealCost * (float) tipPerc / 100;
-    int totalBill = mealCost + taxAmount + tipAmount;
+    float taxAmount = mealCost * (float) taxPerc / 100;
+    float tipAmount = mealCost * (float) tipPerc / 100;
+    int totalBill = mealCost + round(taxAmount) + round(tipAmount);
 
     // output to display
-    printf("%s($%.2f), tax: $%.2f, tip: $%.2f, total: $%.2f\n", MEAL[r],
-        (float)mealCost/100, (float)taxAmount/100, (float)tipAmount/100, (float)totalBill/100);
+    printf("%s($%.2f), tax: %.2f%%, tip: %.2f%%, total: $%.2f\n", MEAL[r],
+        (float)mealCost/100, taxPerc, tipPerc, (float)totalBill/100);
 
     return 0;
 }
